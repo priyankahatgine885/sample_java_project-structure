@@ -1,32 +1,28 @@
-package corejava.collection.assignmentset2.question4.solution;
+package main.java.corejava.collection.assignmentset2.question4.solution;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import corejava.collection.assignmentset2.question4.model.Student;
+import main.java.corejava.collection.assignmentset2.question4.mapper.StudentMapper;
+import main.java.corejava.collection.assignmentset2.question4.model.Student;
 
 public class AverageMarksCalculator {
 	private final String[] studentData;
-	private List<Student> studentList;
 
 	public AverageMarksCalculator(String[] studentData) {
 		this.studentData = studentData;
 	}
 	// map input array to list of Student
 	public List<Student> mapInputArrayToListOfStudent() {
-		studentList = new ArrayList<>();
-		for (String str : studentData) {
-			if (!str.isEmpty()) {
-				String[] columns = str.split(",");
-				Student student = new Student(Integer.parseInt(columns[0]), columns[1], Integer.parseInt(columns[2].trim()));
-				studentList.add(student);
-			}
+		List<Student> list = new ArrayList<>();
+		for(String data: studentData) {
+			Student student = StudentMapper.map(data);
+			list.add(student);
 		}
-		return studentList;
+		return list;
 	}
 
 	// get lowest id from the list of students
-	public Integer getLowestIdFromTheListOfStudents() {
+	public Integer getLowestIdFromTheListOfStudents(List<Student> studentList) {
 		int lowestId = Integer.MAX_VALUE;
 		for (Student student : studentList) {
 			int id = student.getStudentId();
@@ -38,7 +34,7 @@ public class AverageMarksCalculator {
 	}
 
 	// get average marks for the student having lowest id
-	public Double getAverageMarksForTheStudent(Integer lowestId) {
+	public Double getAverageMarksForTheStudent(Integer lowestId, List<Student> studentList) {
 		double averageMark = 0.0;
 		int sum = 0;
 		int count = 0;
@@ -49,7 +45,7 @@ public class AverageMarksCalculator {
 			}
 		}
 		if (count != 0) {
-			averageMark = sum / count;
+			averageMark = (double) sum / count;
 		}
 		return averageMark;
 	}

@@ -1,4 +1,4 @@
-package corejava.collection.assignmentset2.question4.model;
+package main.java.corejava.collection.assignmentset2.question4.model;
 
 public class Student {
 	private Integer studentId;
