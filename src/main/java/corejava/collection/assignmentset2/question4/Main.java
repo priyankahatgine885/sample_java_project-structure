@@ -1,6 +1,7 @@
-package main.java.corejava.collection.assignmentset2.question4;
-import main.java.corejava.collection.assignmentset2.question4.model.Student;
-import main.java.corejava.collection.assignmentset2.question4.solution.AverageMarksCalculator;
+package corejava.collection.assignmentset2.question4;
+
+import corejava.collection.assignmentset2.question4.model.Student;
+import corejava.collection.assignmentset2.question4.solution.AverageMarksCalculator;
 
 import java.util.List;
 
