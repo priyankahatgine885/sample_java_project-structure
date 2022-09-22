@@ -31,8 +31,8 @@ public class Main {
             // get average marks for the student having lowest id
             Double average = averageMarksCalculator.getAverageMarksForTheStudent(lowestId);
             averageMarksCalculator.printResult(average, lowestId);
-        } catch (InvalidPathException | NullPointerException ex) {
-            System.out.println(ex.getMessage());
+        } catch (InvalidPathException | RuntimeException cause) {
+            System.out.println(cause.getMessage());
         }
     }
 }

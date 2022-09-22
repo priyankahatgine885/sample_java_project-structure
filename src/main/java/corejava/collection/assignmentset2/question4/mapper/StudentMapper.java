@@ -4,7 +4,7 @@ package corejava.collection.assignmentset2.question4.mapper;
 import corejava.collection.assignmentset2.question4.model.Student;
 
 public class StudentMapper {
-    public static Student map(final String data) {
+    public static Student map(final String data)throws RuntimeException {
         Student student;
         try {
             String[] arr = data.split(", ");

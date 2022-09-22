@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class StudentInputParser {
-    public List<Student> parseCSVFile(String filePath) throws InvalidPathException, NullPointerException {
+    public List<Student> parseCSVFile(String filePath) throws InvalidPathException{
         List<Student> list = new ArrayList<>();
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
             File file = new File(filePath);
@@ -23,12 +23,9 @@ public class StudentInputParser {
                     if (student != null) {
                         list.add(student);
                     }
-                }else{
-                    throw new NullPointerException();
                 }
             }
-
-        } catch (IOException cause) {
+        } catch (Exception cause) {
             System.out.println(cause);
         }
         return list;
