@@ -1,34 +1,21 @@
 package corejava.collection.assignmentset2.question4.solution;
-
-import corejava.collection.assignmentset2.question4.mapper.StudentMapper;
 import corejava.collection.assignmentset2.question4.model.Student;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class AverageMarksCalculator {
-    private final String[] studentData;
+    private final List<Student> list;
 
-    public AverageMarksCalculator(final String[] studentData) {
-        this.studentData = studentData;
-    }
+    public AverageMarksCalculator(List<Student> studentList) {
 
-    // map input array to list of Student
-    public List<Student> mapInputArrayToListOfStudent() {
-        final List<Student> list = new ArrayList<>();
-        for (final String data : studentData) {
-            final Student student = StudentMapper.map(data);
-            list.add(student);
-        }
-        return list;
+        this.list = studentList;
     }
 
     // get lowest id from the list of students
-    public Integer getLowestIdFromTheListOfStudents(final List<Student> studentList) {
+    public Integer getLowestIdFromTheListOfStudents() {
         int lowestId = Integer.MAX_VALUE;
-        for (final Student student : studentList) {
-            final int id = student.getStudentId();
+        for (Student student : list) {
+            int id = student.getStudentId();
             if (id <= lowestId) {
                 lowestId = id;
             }
@@ -37,34 +24,29 @@ public class AverageMarksCalculator {
     }
 
     // get average marks for the student having lowest id
-    public Double getAverageMarksForTheStudent(final Integer lowestId, final List<Student> studentList) {
-        double averageMark = 0.0;
-        int sum = 0;
-        int count = 0;
-        for (final Student student : studentList) {
+    public Double getAverageMarksForTheStudent(Integer lowestId) {
+        Integer sum = 0;
+        int count = (int) list.stream().filter(student -> student.getStudentId().equals(lowestId)).count();
+        for (Student student : list) {
             if (Objects.equals(student.getStudentId(), lowestId)) {
                 sum += student.getStudentMarks();
-                ++count;
             }
         }
-        if (count != 0) {
-            averageMark = (double) sum / count;
-        }
-        return averageMark;
+        return (double) sum / count;
     }
 
-    public void printResult(final Double result, final Integer lowestId) {
+    public void printResult(Double result, Integer lowestId) {
         System.out.println("Lowest Id is : " + lowestId + " " + "Average Mark is : " + result);
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        for (final String studentInfo : studentData) {
-            sb.append(studentInfo);
-            sb.append("\n"); // find what should be the better way for new line character
-        }
-        return sb.toString();
-    }
+//    @Override
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder();
+//        for (String studentInfo : studentData) {
+//            sb.append(studentInfo);
+//            sb.append("\n"); // find what should be the better way for new line character
+//        }
+//        return sb.toString();
+//    }
 
 }
