@@ -7,10 +7,10 @@ public class StudentMapper {
     public static Student map(final String data)throws RuntimeException {
         Student student;
         try {
-            String[] arr = data.split(", ");
-            Integer studId = Integer.parseInt(arr[0]);
-            String studSubject = arr[1];
-            Integer studMarks = Integer.parseInt(arr[2]);
+            String[] arrData = data.split(", ");
+            Integer studId = Integer.parseInt(arrData[0]);
+            String studSubject = arrData[1];
+            Integer studMarks = Integer.parseInt(arrData[2]);
             student = new Student(studId, studSubject, studMarks);
         }catch (NumberFormatException numberFormatException){
             throw new RuntimeException(numberFormatException);
