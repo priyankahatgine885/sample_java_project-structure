@@ -18,7 +18,7 @@ public class StudentInputParser {
                 throw new InvalidPathException("The provided path is invalid");
             }else {
                 String lineText;
-                if ((lineText = bufferedReader.readLine()) != null) {
+                while (((lineText = bufferedReader.readLine()) != null) && lineText.length() != 0){
                     Student student = StudentMapper.map(lineText);
                     if (student != null) {
                         list.add(student);

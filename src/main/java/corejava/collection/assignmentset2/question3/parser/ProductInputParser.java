@@ -21,7 +21,7 @@ public class ProductInputParser {
                 throw new InvalidPathException("The provided path is invalid");
             }else {
                 String lineText;
-                if ((lineText = bufferedReader.readLine()) != null) {
+                while (((lineText = bufferedReader.readLine()) != null) && lineText.length() != 0){
                     Product product = ProductMapper.map(lineText);
                     if (product != null) {
                         list.add(product);

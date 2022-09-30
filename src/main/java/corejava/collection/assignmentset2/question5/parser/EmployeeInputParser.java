@@ -1,5 +1,7 @@
 package corejava.collection.assignmentset2.question5.parser;
 import corejava.collection.assignmentset2.question4.exception.InvalidPathException;
+import corejava.collection.assignmentset2.question4.mapper.StudentMapper;
+import corejava.collection.assignmentset2.question4.model.Student;
 import corejava.collection.assignmentset2.question5.mapper.EmployeeMapper;
 import corejava.collection.assignmentset2.question5.model.Employee;
 
@@ -18,7 +20,7 @@ public class EmployeeInputParser {
                 throw new InvalidPathException("The provided path is invalid");
             }else {
                 String lineText;
-                if ((lineText = bufferedReader.readLine()) != null) {
+                while (((lineText = bufferedReader.readLine()) != null) && lineText.length() != 0){
                     Employee employee = EmployeeMapper.map(lineText);
                     if (employee != null) {
                         list.add(employee);
