@@ -20,7 +20,7 @@ public class Server {
 
     @Override
     public String toString() {
-        return java.text.MessageFormat.format("Server Name: {0} | Platform: {1} | Software: {2} | Version: {3} {4}",
+        return java.text.MessageFormat.format("Server Name: {0} | Platform: {1} | Software: {2} | Version: {3} ",
                 serverName, softwareType, softwareTypeName, versionNumber, System.lineSeparator());
     }
 }

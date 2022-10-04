@@ -2,11 +2,13 @@ package corejava.collection.assignmentset2.question1.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
 public class Software {
     private String serverName;
 
